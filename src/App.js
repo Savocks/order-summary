@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+
+import backgroundImageDesktop from './images/pattern-background-desktop.svg';
+import backgroundImageMobile from './images/pattern-background-mobile.svg';
+import Card  from "./components/Card/Card";
+
+
+const Wrapper = styled.div`
+  background-image: url(${backgroundImageDesktop});
+  background-color: ${props => props.theme.colors.primaries.paleBlue};
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media screen and (max-width: 425px) {
+    background-image: url(${backgroundImageMobile});
+  }
+`;
+
+const title = 'Order Summary';
+
+const description = 'You can now listen to milions of songs, audiobooks, and podcasts on any device anywhere you like!'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Card title={title} description={description} primaryButton="Proceed to Payment" secondaryButton="Cancel"/>
+    </Wrapper>
   );
 }
 
